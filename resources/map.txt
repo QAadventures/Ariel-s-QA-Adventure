@@ -1,0 +1,1 @@
+LeaveOfficeRoom					EmptyPath					EmptyPath			NicksCube		EmptyPath	FindCoinsRoom		EmptyPath			ExecRoom		FindCoinsRoom			EmptyPath		EmptyPath		EmptyPath	EmptyPath		EmptyPath		FindCoinsRoom	EmptyPath	FindCoinsRoom	StartingRoom	EmptyPath	ManagerRoom			EmptyPath					FindCoinsRoom					EmptyPath					EmptyPath		ProgrammerRoom	EmptyPath	FindCoinsRoom	ITCube		
