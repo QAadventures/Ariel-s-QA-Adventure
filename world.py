@@ -1,11 +1,16 @@
+from re import match
 _world = {}
-starting_position = (0, 0)
+_max_x = 0
+_max_y = 0
 
 def load_tiles(): #adds a dictionary & parses the map text file
     """Parses a file that describes the world space into the _world object"""
+    global _max_x, _max_y
     with open('resources/map.txt', 'r') as f:
         rows = f.readlines()
     x_max = len(rows[0].split('\t')) #assumes all rows contain the same number of tabs
+    _max_x = x_max #specific for map 
+    _max_y = len(rows) #specific for map
     for y in range(len(rows)):
         cols = rows[y].split('\t')
         for x in range(x_max):

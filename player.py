@@ -47,6 +47,19 @@ class Player():
     def move_west(self):
         self.move(dx=-1, dy=0)
 
+#view map - new
+    def view_map(self):
+        print("{0:^60s}").format("-----(OFFICE MAP)-----")
+        for j in range(world._max_y):
+            for i in range(world._max_x):
+                if self.location_x == i and self.location_y == j:
+                    print("[',self.map[j][i].center(16),']"),
+                else:
+                    print(self.map[j][i].center(20)),
+
+            print("")
+              
+
 #attack action
     def attack(self, enemy):
         best_weapon = None

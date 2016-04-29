@@ -4,6 +4,7 @@ from player import Player
 def play():
     world.load_tiles()
     player = Player()
+    player.move(2,5) #starting location on map
     room = world.tile_exists(player.location_x, player.location_y)
     print(room.intro_text())
     while player.is_alive() and not player.victory:

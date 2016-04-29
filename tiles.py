@@ -5,6 +5,7 @@ class MapTile:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.id = "????????"
 
     def intro_text(self):
         raise NotImplementedError()
@@ -28,6 +29,7 @@ class MapTile:
     def available_actions(self): #returns all available actions in the room
         moves = self.adjacent_moves()
         moves.append(actions.ViewInventory())
+        moves.append(actions.ViewMap())
 
         return moves
 
@@ -35,6 +37,10 @@ class MapTile:
 #subclasses
 #starting room subclass
 class StartingRoom(MapTile):
+    def __init__(self, x, y):
+        super().__init__(x,y)
+        self.id = "START"
+    
     def intro_text(self):
         return """\n\n\nYou find yourself in your cubicle, hearing screams and shouts around you.
 You can make out four paths, each equally shitty-looking.
@@ -90,6 +96,10 @@ class EnemyRoom(MapTile):
 
 #empty room subclass
 class EmptyPath(MapTile):
+    def __init__(self, x, y):
+        super().__init__(x, y)
+        self.id = "Empty office path"
+    
     def intro_text(self):
         return """
     Another boring part of the office - nothing exciting here. You must go on!
@@ -104,6 +114,7 @@ class EmptyPath(MapTile):
 class NicksCube(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.YasuTools())
+        self.id = "Nick's Cubicle"
 
     def intro_text(self):
         if self.item:
@@ -124,6 +135,7 @@ class NicksCube(LootRoom):
 class ITCube(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.Emails())
+        self.id = "IT guy's cubicle"
 
     def intro_text(self):
         if self.item:
@@ -145,6 +157,7 @@ class ITCube(LootRoom):
 class ManualCube(LootRoom):
     def __init__(self, x, y):
         super().__init__(x, y, items.Manual())
+        self.id = "Coworker's cubicle"
 
     def intro_text(self):
         if self.item:
@@ -165,6 +178,7 @@ class ManualCube(LootRoom):
 class FindCoinsRoom(LootRoom):
     def __init__(self, x,y):
         super().__init__(x, y, items.Coins(5))
+        self.id = "Hash coins!!"
 
     def intro_text(self):
         if self.item:
@@ -200,6 +214,7 @@ class ExecRoom(EnemyRoom):
 class ProgrammerRoom(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.Programmer())
+        self.id = "Out of touch programmer"
 
     def intro_text(self):
         if self.enemy.is_alive():
@@ -229,6 +244,7 @@ class ProgrammerRoom(EnemyRoom):
 class ManagerRoom(EnemyRoom):
     def __init__(self, x, y):
         super().__init__(x, y, enemies.Manager())
+        self.id = "Your boss's office"
 
     def intro_text(self):
         if self.enemy.is_alive():

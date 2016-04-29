@@ -29,6 +29,11 @@ class MoveWest(Action):
     def __init__(self):
         super().__init__(method=Player.move_west, name='Move west', hotkey='w')
 
+#view map
+class ViewMap(Action):
+    def __init__(self):
+        super().__init__(method=Player.view_map, name='View map', hotkey='m')
+
 #prints player's inventory
 class ViewInventory(Action):
     def __init__(self):
